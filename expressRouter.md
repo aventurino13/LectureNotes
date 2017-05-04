@@ -66,16 +66,17 @@ Create html file
 other.js
 ```javascript
 //route to serve back html
+  
   //requres
   var express = require ( 'express' );
   var router = express.Router();
   var path = require ( 'path' );
   
+  //GET for other.html 
   router.get( '/other', function ( req,res ) {
    console.log( '/other get hit in other.js');
    res.sendFile( path.resolve ( 'public/views/other.html' );
   });//end get /other
- 
   
   //export module
   module.exports = router;
