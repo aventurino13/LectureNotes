@@ -62,9 +62,28 @@ index.js
   //export module
   module.exports = router;
 ```
+Create html file 
+other.js
+```javascript
+//route to serve back html
+  //requres
+  var express = require ( 'express' );
+  var router = express.Router();
+  var path = require ( 'path' );
+  
+  router.get( '/other', function ( req,res ) {
+   console.log( '/other get hit in other.js');
+   res.sendFile( path.resolve ( 'public/views/other.html' );
+  });//end get /other
  
- (4) Require Module in Server
+  
+  //export module
+  module.exports = router;
+```
  
+ (4) Require Modules in Server
+ 
+app.js
 ```javascript
   
   //requires
@@ -73,6 +92,7 @@ index.js
   var bodyParser = require ( 'body-parser');
   var path = require ( 'path');
   var index = require('./modules/index.js');
+  var other = require( '/modules/other' );
   
   //globales
   var port = 3333;
@@ -82,6 +102,8 @@ index.js
   app.use( bodyParser.urlencoded( {extended: true} ) ):
   //tell the server to use the router at 
   app.use('/', index);
+  app.use('/', other);
+         //if you put app.use('/other', other) then it would go to -->  .../other/other
   
   //spin up server
   app.listen ( port, function() {
@@ -89,6 +111,5 @@ index.js
   }); 
   
 ```
-5) Create index.html
 
 
