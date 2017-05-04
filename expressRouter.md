@@ -4,13 +4,14 @@ Express Router
 - Require the routes from modules in server files
 - Allows you to update modules - makes it easier to handle larger projects. 
 
-1) Spin up new project
+(1) Spin up new project
 ----
  - npm init
  - npm install body-parser express --save
  - Create files and folders
 
-2) Spin up Server
+(2) Spin up Server
+---
 ```javascript
   
   //requires
@@ -39,7 +40,8 @@ Express Router
   
 ```
 
-3) Create Modules Folder + Set-up index.js 
+(3)Create Modules Folder + Set-up index.js 
+---
   - Require anything that will need to be used in modules
   - Export GET route
   
@@ -61,7 +63,7 @@ index.js
   module.exports = router;
 ```
  
- 4) Require Module in Server
+ (4) Require Module in Server
  
 ```javascript
   
