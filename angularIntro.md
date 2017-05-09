@@ -35,10 +35,12 @@ npm instal body-parser express --save
         <input type="text" placeholder="name" ng-model='ic.nameIn'/>
         <input type="text" placeholder="name" ng-model='ic.descriptionIn'/>
         <button ng-click='ic.addItem()'>Add Item</button>
-        <div ng-repeat='thing in ic.items'> --> if you change thing to item you must change all subsequent "thing" to item
-        <h2>{{ thing.name }} </h2>--> for each thing in this array create a div which contains the thing.name
-        <p>{{ thing.description }}</p>
-        </div>
+        <div class='container row '>
+          <div ng-repeat='thing in ic.items' class='col-sm-3'> --> if you change thing to item you must change all subsequent "thing" to item
+          <h2>{{ thing.name }} </h2>--> for each thing in this array create a div which contains the thing.name
+          <p>{{ thing.description }}</p>
+          </div>
+         </div>
       </div>
     </body>
   ```
@@ -65,8 +67,11 @@ npm instal body-parser express --save
         name: vm.nameIn,
         description: vm.descriptionIn
         };
-        
-        vm.items.push( newItem ):
+       //push items into array
+       vm.items.push( newItem );
+       //empy inputs
+       vm.nameIn='';
+       vm.descriptionIn='';
       }
       
     });//end inventory controller
@@ -75,6 +80,7 @@ npm instal body-parser express --save
   ```
   2-Way-Binder
     - vm.addItem in script = ic.addItem in html
+    - Use this to get information and also set info
   
   app.js
   ```javascript
@@ -102,7 +108,7 @@ npm instal body-parser express --save
   ```
   
   module ---> index.js
-  ```
+  ```javascript
      var express = require ( 'express' );
      var router = express.Router();
      var path = require( 'path' );
