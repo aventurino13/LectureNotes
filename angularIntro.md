@@ -35,9 +35,16 @@ npm instal body-parser express --save
         <input type="text" placeholder="name" ng-model='ic.nameIn'/>
         <input type="text" placeholder="name" ng-model='ic.descriptionIn'/>
         <button ng-click='ic.addItem()'>Add Item</button>
+        <div ng-repeat='thing in ic.items'> --> if you change thing to item you must change all subsequent "thing" to item
+        <h2>{{ thing.name }} </h2>--> for each thing in this array create a div which contains the thing.name
+        <p>{{ thing.description }}</p>
+        </div>
       </div>
     </body>
   ```
+  - ng-repeat --> acts as a loop "items in ic.items(-->array)"
+  - thing.name  & thing.description --> .name and .description come from the keys in newItem
+  
   
   ngBasics.js
   ```javascript
