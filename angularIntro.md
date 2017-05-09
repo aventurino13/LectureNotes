@@ -1,17 +1,88 @@
 Angular Intro
 ===
 
+NG Basics
+---
+
   - Set up basic project - node, express, angular
   - Source files
-  - Create "myApp" and link to html
+  - Create "myApp" (ng app) and link to html
   - Create controller and link to div in html
-  - Create and test ```ng-click``` to handle clikc events
-  - Connect input fields via ```ng-model```
   - Create ```var vm``` which will refer to our controller
+  - Create and text ```ng-click``` to handle clikc events
+  - Connect input fields via ```ng-model```
   - Create ```vm.ARRAYNAME``` which will hold our items
   - Push items from the input fields into the array when a button is clicked
   - Display items on DOM with ```ng-repeat```
   
 
+Terminal Set-up
 ```
+npm start
+npm instal body-parser express --save  
 ```
+  - Move anuglar.min.js into vendors folder
+  
+  index.html
+  ```html
+    <script src = "vendors/angular.min.js" charset="utf-8"></script>
+    <script src = "scripts/ngBasics.js" charset="utf-8"></script>
+    
+    
+    <body ng-app="myApp">
+      <h1>NG Basics</h1>
+    </body>
+  ```
+  
+  ngBasics.js
+  ```javascript
+    var myApp = angular.module( 'myApp', [] );
+    
+  
+  
+  ```
+  
+  app.js
+  ```javascript
+    //requires
+    //node modules
+    var express = require ( 'express' );
+    var app = express ();
+    var bodyParser = require ( 'body-parser' );
+    //our modules
+    var index = require('.modules/index' );
+    
+    //uses
+    app.use( express.static( 'public' ) );
+    app.use( 'bodyParser.urlencoded( { extended: true } ) );
+    //routes
+    app.use('/', index );
+    
+    //globals
+    var port = process.env.PORT || 3456;
+    
+    //spin up server
+    app.listen( port , function () {
+      
+    })
+  ```
+  
+  module ---> index.js
+  ```
+     var express = require ( 'express' );
+     var router = express.Router();
+     var path = require( 'path' );
+     
+     router.get('/', function( req, res ) {
+      res.sendFile( path.resolve( 'public/views/index.html' );
+     })
+     
+     module.exports = 
+    
+  ```
+  
+  
+  
+  
+  
+  
