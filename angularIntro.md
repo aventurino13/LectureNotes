@@ -49,10 +49,17 @@ npm instal body-parser express --save
       console.log('NG');
       //variable global to this controller
       var vm = this;
+      //array attached to controller (makes it availbile to DOM)
+      vm.items = [];
       //"vm" stands for "view model"
       vm.addItem = function(){
         console.log('in add item ng-click');
-        console.log(vm.nameIn, vm.descriptionIn);
+        var newItem = {
+        name: vm.nameIn,
+        description: vm.descriptionIn
+        };
+        
+        vm.items.push( newItem ):
       }
       
     });//end inventory controller
