@@ -29,18 +29,38 @@ npm instal body-parser express --save
     <script src = "scripts/ngBasics.js" charset="utf-8"></script>
     
     
-    <body ng-app="myApp">
+    <body ng-app='myApp'>
       <h1>NG Basics</h1>
+      <div ng-controller='InventoryController as ic'>
+        <input type="text" placeholder="name" ng-model='ic.nameIn'/>
+        <input type="text" placeholder="name" ng-model='ic.descriptionIn'/>
+        <button ng-click='ic.addItem()'>Add Item</button>
+      </div>
     </body>
   ```
   
   ngBasics.js
   ```javascript
+    //app is the entire app
     var myApp = angular.module( 'myApp', [] );
     
-  
+    //controller is smaller part of the bigger app
+    myApp.controller( 'InventoryController', function(){
+      console.log('NG');
+      //variable global to this controller
+      var vm = this;
+      //"vm" stands for "view model"
+      vm.addItem = function(){
+        console.log('in add item ng-click');
+        console.log(vm.nameIn, vm.descriptionIn);
+      }
+      
+    });//end inventory controller
+     
   
   ```
+  2-Way-Binder
+    - vm.addItem in script = ic.addItem in html
   
   app.js
   ```javascript
@@ -54,7 +74,7 @@ npm instal body-parser express --save
     
     //uses
     app.use( express.static( 'public' ) );
-    app.use( 'bodyParser.urlencoded( { extended: true } ) );
+    app.use( bodyParser.urlencoded( { extended: true } ) );
     //routes
     app.use('/', index );
     
