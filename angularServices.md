@@ -101,3 +101,8 @@ ng-init = ic.getItems();
 ```
 * Runs on the initiation of this div
 
+```.then()
+```
+* waits until thing it is called on is done
+* you can pass in paramater -- that perameter will berepaced if the thing that then is called on returns something
+
