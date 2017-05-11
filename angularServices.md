@@ -41,6 +41,7 @@ myApp.controller( 'InventoryController', function( $http, GetItems ) {.....}
 * Try to make it so you have a little code in controller and alot of code in services
 * If you have alot of things in functions then you have mobility to call those functions in many places
 * Controller is communicator because what operations you want to perform and what you want to see on the DOM
+* Using angular architecture to seperate things and get things connected
 
 
 #### my App
@@ -50,13 +51,15 @@ myApp.controller( 'InventoryController', function( $http, GetItems ) {.....}
   
   myApp.controller( 'InventoryController', function($http, GetItems){
     console.log('-->NG');
-    GetItems.getItems();
 
     var vm = this;
     vm.items = [];
   
-    GetItems.getItems.then(function(data){
+    vm.getItems = function(){     //--> you want to call this whenever you want to put it in a function
+     GetItems.getItems.then(function(data){ //--> this is a function being called 
       console.log(' using dot then', data);
+      vm.items = data;
+      }
     }
 
     vm.addItem = function(){
@@ -91,3 +94,10 @@ myApp.controller( 'InventoryController', function( $http, GetItems ) {.....}
   });//end inventory controller
 
 ```
+
+
+```
+ng-init = ic.getItems();
+```
+* Runs on the initiation of this div
+
