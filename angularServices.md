@@ -77,6 +77,14 @@ myApp.controller( 'InventoryController', function( $http, GetItems ) {.....}
      getItems();
     };//end addItem
 
+  vm.nameIn = '';
+  vm.descriptionIn = '';
+  });//end inventory controller
+
+```
+
+The function was moved from angular app into a service -- now we can just call the function in the app instead of having the function below -->
+```
   function getItems(){
     $http({
       method: 'GET',
@@ -86,12 +94,6 @@ myApp.controller( 'InventoryController', function( $http, GetItems ) {.....}
      vm.itemData = response.data;
     });
   }//end getItems
-
-
-  vm.nameIn = '';
-  vm.descriptionIn = '';
-  });//end inventory controller
-
 ```
 
 ### ng-init
