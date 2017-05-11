@@ -2,7 +2,7 @@ Angular Services
 ===
 
 ### Services
-Allows you to make controllers and write code onece and use it/make availbile wherever you need it
+Allows you to make controllers and write code onece and use it/make availbile wherever you need it.
 1. Inject service in controller
 * The things that are in service are not globally scoped - so it must be injected into angular app
 ```javascript
@@ -13,6 +13,14 @@ myApp.controller( 'InventoryController', function( $http, GetItems ) {.....}
 ```html
 <script src="scripts/getItems-service.js" type="text/javascript"></script>
 ```
+* You do not need to module.export beacuse you have already registered getItems as a part of my app
+* Must inject getItems into myApp
+* Try to make it so you have a little code in controller and alot of code in services
+* If you have alot of things in functions then you have mobility to call those functions in many places
+* Controller is communicator because what operations you want to perform and what you want to see on the DOM
+* Using angular architecture to seperate things and get things connected
+
+
 
 #### getItems-service.js
 ```javascript
