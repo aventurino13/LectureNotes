@@ -1,8 +1,7 @@
 Angular Services
 ===
 
-Services
----
+### Services
 Allows you to make controllers and write code onece and use it/make availbile wherever you need it
 1. Inject service in controller
 * The things that are in service are not globally scoped - so it must be injected into angular app
@@ -95,14 +94,15 @@ myApp.controller( 'InventoryController', function( $http, GetItems ) {.....}
 
 ```
 
-
+### ng-init
 ```
 ng-init = ic.getItems();
 ```
 * Runs on the initiation of this div
-
-```.then()
+### .then()
+```getItems().then(data)
 ```
 * waits until thing it is called on is done
 * you can pass in paramater -- that perameter will berepaced if the thing that then is called on returns something
+* Ex: If get items returns a value it will replace data in the then
 
