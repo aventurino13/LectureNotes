@@ -33,29 +33,26 @@ myApp.controller( 'InventoryController', function( $http, GetItems ) {.....}
             //must inject http to make it availible
   myApp.service( 'GetItems', function( $http ){
   
-  var counter = 0:
+    var counter = 0:
   
-  this.counterGetter = function () {
-  return getCounter;  //--> count getter which returns counter
-  }
+    this.counterGetter = function () {
+    return getCounter;  //--> count getter which returns counter
+    }
   
-  this.counterSetter = function() {    //--> this refers to the incapsulating scope (in this case thise service)
-    counter++;
-  }
+    this.counterSetter = function() {   //--> this refers to the incapsulating scope (in this case thise service)
+      counter++;
+    }
   
-  this.getItems = function (){  //--> this refers to this whole services
-  consle.log('in get Items');
-  return http({    //--> you want return this whole http out of the function
-    method: 'GET',
-    url: '/inventory',
-    })then( function success( response ) {
-      console.log( 'resp:', response );
-      return response.data;   //--> return throws the value out of the current function - makes it availible in service
-  });// end success funciton
-  
-  
-  
-  })end servic function
+    this.getItems = function (){      //--> this refers to this whole services
+      consle.log('in get Items');
+      return http({                   //--> you want return this whole http out of the function
+        method: 'GET',
+        url: '/inventory',
+        })then( function success( response ) {
+          console.log( 'resp:', response );
+          return response.data;         //--> return throws the value out of the current function - makes it availible in service
+        });// end success funciton 
+  })end 
 ```
 * You do not need to module.export beacuse you have already registered getItems as a part of my app
 * Must inject getItems into myApp
