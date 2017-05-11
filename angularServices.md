@@ -4,15 +4,19 @@ Angular Services
 ### Services
 Allows you to make controllers and write code onece and use it/make availbile wherever you need it.
 1. Inject service in controller
+
 * The things that are in service are not globally scoped - so it must be injected into angular app
 ```javascript
 myApp.controller( 'InventoryController', function( $http, GetItems ) {.....}
 ```
+
 2. Source in HTML file 
+
 * my app must exist first before we can refer to it
 ```html
 <script src="scripts/getItems-service.js" type="text/javascript"></script>
 ```
+
 * You do not need to module.export beacuse you have already registered getItems as a part of my app
 * Must inject getItems into myApp
 * Try to make it so you have a little code in controller and alot of code in services
@@ -25,9 +29,19 @@ myApp.controller( 'InventoryController', function( $http, GetItems ) {.....}
 #### getItems-service.js
 ```javascript
   
-  //getItems is name of service - registered getItems as part of myApp
-  //must inject http to make it availible
+            //getItems is name of service - registered getItems as part of myApp
+            //must inject http to make it availible
   myApp.service( 'GetItems', function( $http ){
+  
+  var counter = 0:
+  
+  this.counterGetter = function () {
+  return getCounter;  //--> count getter which returns counter
+  }
+  
+  this.counterSetter = function() {    //--> this refers to the incapsulating scope (in this case thise service)
+    counter++;
+  }
   
   this.getItems = function (){  //--> this refers to this whole services
   consle.log('in get Items');
@@ -61,6 +75,14 @@ myApp.controller( 'InventoryController', function( $http, GetItems ) {.....}
 
     var vm = this;
     vm.items = [];
+    
+    vm.count = GetItems.counterGetter();// function gets count on initiation of html load
+    
+    vm.counting = function(){   //funciton attached to button click ic.counting on html button
+    GetItems.counterSetter();  //calling the function to set counter 
+     vm.count = GetItems.counterGetter(); //then recalls to get the new count
+     }
+    
   
     vm.getItems = function(){     //--> you want to call this whenever you want to put it in a function
      GetItems.getItems.then(function(data){ //--> this is a function being called 
@@ -91,6 +113,12 @@ myApp.controller( 'InventoryController', function( $http, GetItems ) {.....}
 
 ```
 
+#### HTML
+```html
+<button type="button" ng-click='ic.counting()'>Count for Me!</button>
+```
+
+
 The function was moved from angular app into a service -- now we can just call the function in the app instead of having the function below -->
 ```
   function getItems(){
@@ -104,11 +132,15 @@ The function was moved from angular app into a service -- now we can just call t
   }//end getItems
 ```
 
+
+
 ### ng-init
 ```
 ng-init = ic.getItems();
 ```
 * Runs on the initiation of this div
+
+
 ### .then()
 ```getItems().then(data)
 ```
