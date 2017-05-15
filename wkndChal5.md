@@ -3,12 +3,12 @@ Weekend Challange 5
 OMDB API - Angular Routes
 ---
 
-###Terminal  
+### Terminal  
 ```
   npm init     //creates package.json
   npm install --save angular bootstrap express body-parser angular-route mongoose
 ```
-###index.html
+### index.html
 ```html
   <div ng-repeat="movie in 
 ```
@@ -19,7 +19,7 @@ OMDB API - Angular Routes
 
 ```
 
-###client.js
+### client.js
 ```javascript
   //creating angular module that will act as entire application
   var app = angular.module('movieApp', ['ngRoute']);
@@ -45,7 +45,7 @@ OMDB API - Angular Routes
 ```
 
 
-###searchController.js
+### searchController.js
 ```javascript
 
   app.controller('seachController', ['seachService', 
@@ -56,7 +56,7 @@ OMDB API - Angular Routes
   }]);
 ```
 
-###favoritesController
+### favoritesController
 ```
   app.controller('favoritesController', ['favoritesServicefunction(){
     var self = this;
@@ -64,7 +64,7 @@ OMDB API - Angular Routes
   }
 ```
 
-###favoritesService
+### favoritesService
 ```javascript
   app.service('favoritesService', ['$http', function ($http) {
     var self = this;
@@ -96,7 +96,7 @@ OMDB API - Angular Routes
 ```
 
 
-###searchService.js
+### searchService.js
 ```javascript
 
   app.service('seachService', [$http, function ( $http ){
@@ -116,7 +116,7 @@ OMDB API - Angular Routes
 ```
 
 
-###app.js
+### app.js
 ```
     var express = require('express');
     var app = express();
@@ -147,7 +147,7 @@ OMDB API - Angular Routes
 ```
 
 
-###favorites.js (in routes)
+### favorites.js (in routes)
 ```javascript
   var express = require ('express')
   var router = express.Router()
@@ -181,7 +181,7 @@ OMDB API - Angular Routes
   
 ```
 
-###favorites.js (in modules)--> create schema
+### favorites.js (in modules)--> create schema
 ```javascript
   var mongoose = require('mongoose');
   var Schema = mongoose.Schema;
