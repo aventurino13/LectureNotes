@@ -1,7 +1,7 @@
 Authentication
 ===
 
-##Introduction
+## Introduction
 What is authentication?
   - Recognize user in system - lets them in knows who they are 
   - What information is currated to you - pulling from user info to build view
