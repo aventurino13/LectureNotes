@@ -21,17 +21,18 @@ Three possible senarios/ states for user
    
 1. Creating Account
   - Make post request to server
-      --> routed to register 
+     - routed to register 
             ```app.use('register', register)```
-      --> mongoose creates new user using model 
-        --> fires off pre.save function 
-          --> generate SALT 
-              ```javascript bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt){
+      - mongoose creates new user using model 
+        - fires off pre.save function 
+          - generate SALT 
+              ```javascript 
+              bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt){
               }```
-          --> generate Hash
+          - generate Hash
               ```javascript bcrypt.hash(user.password, salt, function (err, hash){  
               }```
-        --> ```Next()``` Tells it to go to the next step
-        --> Saved in DB
-      --> If successs account is created in db
+        - ```Next()``` Tells it to go to the next step
+        - Saved in DB
+      - If successs account is created in db
         ```res.redirect('/');``` --> pretend like there was a new request for /
