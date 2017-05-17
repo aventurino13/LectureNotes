@@ -89,5 +89,5 @@ Passport
       - must use on every route you want protected
 
   
-  
+  <img LectureNotes/passportAuth.jpg>
   
