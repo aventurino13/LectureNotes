@@ -88,6 +88,6 @@ Passport
     - req.isAuthenticated() 
       - must use on every route you want protected
 
-  
-  <img LectureNotes/passportAuth.jpg>
+  ![alt text](LectureNotes/passportAuth.jpg)
+ 
   
