@@ -12,7 +12,6 @@ Three possible senarios/ states for user
    
    App.js
    - Order matters and it must run in a specific order to function
-   - 
  
  Passport 
    - Helps node projects make sure a user is authenticating
@@ -25,14 +24,21 @@ Three possible senarios/ states for user
             ```app.use('register', register)```
       - mongoose creates new user using model 
         - fires off pre.save function 
+          - bcrypt --> popular encryption library (package) - runs in node
           - generate SALT 
               ```javascript 
               bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt){
-              }```
+              }
+              ```
           - generate Hash
-              ```javascript bcrypt.hash(user.password, salt, function (err, hash){  
-              }```
-        - ```Next()``` Tells it to go to the next step
+              ```javascript 
+              bcrypt.hash(user.password, salt, function (err, hash){  
+              }
+              ```
+        - Tells it to go to the next step 
+          ```javascript
+          Next()
+          ``` 
         - Saved in DB
       - If successs account is created in db
-        ```res.redirect('/');``` --> pretend like there was a new request for /
+        ``` res.redirect('/'); ```pretend like there was a new request for /
