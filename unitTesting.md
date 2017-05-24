@@ -48,15 +48,8 @@ describe('description of test', function(){
 Terminal - install chai and mocha as dev-dependencies (locally)
 #### terminal
 ```
-npm install chai--save-dev
-npm install mocha--save-dev
-```
-#### package.json
-```
- },
- "scripts": {
-  "tests": "mocha test/*.test.js"
-  },
+$: npm install chai--save-dev
+$: npm install mocha--save-dev
 ```
 
 #### moduleOne.js
@@ -70,6 +63,7 @@ npm install mocha--save-dev
  module.exports = addOne;
 ```
 ### 1. Write test
+ - Every `it` block is considered it's own test 
 #### addOne.test.js
 ```javascript
  
@@ -79,22 +73,38 @@ npm install mocha--save-dev
  describe('testing add one module', function(){
   //what should it do?
   //call add one function with some value --> addOne(8) and expect = 9
+  
   it('should add one to the number passed in', function(){
    
-   //var ourNumber = 8;
-   //var ourNumberPlusOne = addOne(ourNumber);
-   //expect(ourNumberPlusOne).to.equal(9);
-   // OR condensed to code below
+    //var ourNumber = 8;
+    //var ourNumberPlusOne = addOne(ourNumber);
+    //expect(ourNumberPlusOne).to.equal(9);
+    // OR condensed to code below
   
-   expect(addOne(8)).to.equal(9);
+    expect(addOne(8)).to.equal(9);
+  }); 
+  
+  it('should return a number type', function () {
+   expect(addOne(8)).to.be.a('number');
   });
- });
+  
+});
 ```
 
 ### 2. Run Test using Mocha
 #### terminal
 ```
- mocha test/addOne.test.js
+ $: mocha test/addOne.test.js
 ```
-
-
+### OR Include Test Script in package.json
+#### package.json
+```
+ },
+ "scripts": {
+  "tests": "mocha test/*.test.js"  //this will run all test.js files in test folder
+  },
+```
+#### terminal
+```
+$:  npm test
+```
