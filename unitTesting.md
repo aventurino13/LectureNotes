@@ -130,8 +130,7 @@ $:  npm test
    console.log( ' inside get route', req.params.number );
    var myNum = req.params.number;
    var result = addOne(myNum);
-   console.log( result );
-   res.sendStatus( 200 ).send({;  
+   res.sendStatus( 200 ).send( {answer: result} ) ;  
   });
   
   app.listen( 4567, function () {
