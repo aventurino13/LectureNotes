@@ -112,9 +112,8 @@ $: npm install mocha--save-dev
 ```
 $:  npm test
 ```
+Server Testing
 =========================
-
-## Server Testing
  - relies on the server being up and running
  
 #### app.js
