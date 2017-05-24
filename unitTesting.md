@@ -43,8 +43,10 @@ describe('description of test', function(){
    - Write code and then check with tests
  - TDD - Test Driven Development
    - Write test then code to pass test
+=====================
 
 ## Writing Tests
+-------------------------------------
 Terminal - install chai and mocha as dev-dependencies (locally)
 #### terminal
 ```
@@ -63,6 +65,7 @@ $: npm install mocha--save-dev
  module.exports = addOne;
 ```
 ### 1. Write test
+-------------------------------------
  - Every `it` block is considered it's own test 
 #### addOne.test.js
 ```javascript
@@ -92,6 +95,7 @@ $: npm install mocha--save-dev
 ```
 
 ### 2. Run Test using Mocha
+-------------------------------------
 #### terminal
 ```
  $: mocha test/addOne.test.js
@@ -107,4 +111,65 @@ $: npm install mocha--save-dev
 #### terminal
 ```
 $:  npm test
+```
+=========================
+
+## Server Testing
+ - relies on the server being up and running
+ 
+#### app.js
+```javascript
+  var express = require('express');
+  var app = express();
+  var addOne = require('./modules/addOne');
+
+  //GET
+  // /addOne/8
+  
+  app.get('/addOne/:number', function ( req, res ) {
+   console.log( ' inside get route', req.params.number );
+   var myNum = req.params.number;
+   var result = addOne(myNum);
+   console.log( result );
+   res.sendStatus( 200 ).send({;  
+  });
+  
+  app.listen( 4567, function () {
+   console.log( 'server up on port 4567' );
+   });
+
+```
+#### terminal
+```
+$: npm install request --save-dev
+```
+
+#### app.test.js
+```javascript
+ var expect = require('chair').expect;
+ var request = require ('request');
+ 
+ describe('test main server file', function (){
+  var url = 'http://localhost:4567/addOne/5';
+  
+  it('test server adds one', function( done ) {   //--> must inject done so that you are able to later call it
+   
+   request(url, function ( err, res, body ){  
+    console.log( body );   
+    expect(JSON.parse(body).answer).to.equal(6);   //tests that the module works (repeating unit test)  
+    done();   
+   });
+   
+  });
+  
+   it('test should return status code 200', function (done){
+     request(url, function (err, res, body) {
+       //test the response code 
+       //this is important because it is something the server does that has nothing to do with module  
+       expect(res.statusCode).to.equal( 200 );
+       done();
+      });
+    });
+  
+}); 
 ```
