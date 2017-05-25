@@ -1,8 +1,10 @@
 ES6
+===
 
 ## Let-Const 
-Hoisting --> move varbiable declartions to the top of the nearest
-function and make them global at this level
+- Hoisting --> move varbiable declartions to the top of the nearest function and make them global at this level
+- the more global state you have the more potential to cause probrlems
+- function Scope --> anything you declare will be scoped to the nearest function not to the nearest block
 
 ```javascript
 for (var i = 0; i < 10; i++) {
@@ -19,11 +21,8 @@ function ourFunction() {
 }
 ```
 
-the more global state you have the more potential to cause probrlems
-function Scope --> anything you declare will be scoped to the nearest function not to the nearest block
 
-
-ES5 SOLUTION -- put into a function
+#### ES5 SOLUTION --put into a function
 ```javascript
 function counter (){
   for (var i = 0; i < 10; i++) {
@@ -31,7 +30,7 @@ function counter (){
   }
 }
 ```
-### LET
+#### LET Solution
 ```javascript
 
   for (let j = 0; j < 10; j++) {
@@ -41,7 +40,7 @@ function counter (){
   
 ```
 
-### CONST
+#### CONST Example
 ```javascript
   const express = require('express');
 ```
