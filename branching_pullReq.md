@@ -17,7 +17,11 @@ To add specific files
 ```
 $: git add [specificFileName]
 ```
-
+While on a new branch you can type:
+```
+$: git push
+```
+This will then display the following text - copy and paste in terminal to create upstream branch on github 
 ```
 $:git push --set-upstream origin [fileName]
 ```
